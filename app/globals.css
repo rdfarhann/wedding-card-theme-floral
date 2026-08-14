@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #fdf6f3;
+  color: #4a121f;
+}
+
+/* Prevent scroll while cover overlay is open */
+body.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
+::selection {
+  background-color: #b33951;
+  color: #fdf6f3;
+}
+
+/* Thin rose scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #fdf6f3;
+}
+::-webkit-scrollbar-thumb {
+  background: #b33951;
+  border-radius: 999px;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Subtle floral-inspired dot lattice used as ambient background texture */
+  .bg-floral-dots {
+    background-image: radial-gradient(
+      circle at 1px 1px,
+      rgba(179, 57, 81, 0.35) 1px,
+      transparent 0
+    );
+    background-size: 28px 28px;
+  }
+
+  .divider-rose {
+    position: relative;
+  }
+  .divider-rose::before,
+  .divider-rose::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 2.5rem;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #b33951);
+  }
+  .divider-rose::before {
+    right: calc(100% + 1rem);
+  }
+  .divider-rose::after {
+    left: calc(100% + 1rem);
+    background: linear-gradient(90deg, #b33951, transparent);
+  }
+
+  .eyebrow {
+    @apply font-body text-eyebrow uppercase tracking-[0.32em] text-rose-light;
+  }
+
+  .section-frame {
+    @apply relative mx-auto max-w-xl px-6 py-24 sm:px-10;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+/* Tekstur Kertas Halus & Aksen Floral Transparan */
+.bg-paper-texture {
+  background-color: #fdf6f3; /* Warna dasar blush hangat */
+  background-image: radial-gradient(#d46a85 0.4px, transparent 0.4px), radial-gradient(#d46a85 0.4px, #fdf6f3 0.4px);
+  background-size: 16px 16px;
+  background-position: 0 0, 8px 8px;
+  opacity: 0.95;
+}
+
+/* Vignette Halus di Pinggir Layar */
+.bg-vignette {
+  background: radial-gradient(circle, transparent 60%, rgba(74, 18, 31, 0.08) 100%);
+}
+
+/* Watercolor floral background photo used behind sections (see lib/data.ts) */
+.bg-floral-watercolor {
+  background-size: cover;
+  background-position: center;
+}
